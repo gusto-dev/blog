@@ -22,7 +22,8 @@ module.exports = {
       {
         test: /.css?$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
-        use: ['style-loader', 'css-loader'],
+        //로더는 오른쪽부터 읽어들이므로 postcss-loader를 맨 오른쪽에 넣어준다.
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },
