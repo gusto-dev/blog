@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -13,6 +13,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /.jsx?$/,
         include: [path.resolve(__dirname, 'src')],
@@ -28,7 +33,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx'],
+    extensions: ['.tsx', '.json', '.js', '.jsx'],
   },
   plugins: [
     // 빌드 과정을 알려줌
